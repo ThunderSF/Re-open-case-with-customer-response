@@ -9,7 +9,7 @@ public without Sharing class ReOpenCaseWithCustomerResponse {
             }
         }
         if(emIds.size()>0){
-            List<Case> caseList = [Select id,Count_of_Inbound_Emails__c,Status from Case Where Id IN : emIds.keySet() AND Status != 'Closed' AND Status != 'New'];
+            List<Case> caseList = [Select id,Status from Case Where Id IN : emIds.keySet() AND Status != 'Closed' AND Status != 'New'];
             if(caseList.size()>0){
                 for(Case c : caseList){
                     c.Status = 'Open'; 
